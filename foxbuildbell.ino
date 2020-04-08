@@ -79,7 +79,7 @@ void setup() {
   
   Serial.begin(115200);   // NOTE:  If using the Arduino Serial monitor
   setup_wifi();
-  client.setServer(mqtt_server, 1883);
+  client.setServer(MQTT_SERVER, MQTT_PORT);
   client.setCallback(callback);
 
 #ifdef ISBUTTON
@@ -97,9 +97,9 @@ void setup_wifi() {
   // We start by connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
-  Serial.println(ssid);
+  Serial.println(BELL_WIFI_SSID);
 
-  WiFi.begin(ssid, password);
+  WiFi.begin(BELL_WIFI_SSID, BELL_WIFI_PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -165,7 +165,7 @@ void reconnect() {
   while ( ! client.connected() ) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if ( client.connect(clientid,username,mqttpass) ) {
+    if ( client.connect(clientid,MQTT_USERNAME,MQTT_PASSWORD) ) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       int r = 0;
