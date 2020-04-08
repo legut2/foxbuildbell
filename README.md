@@ -20,6 +20,13 @@ The "bell" relay is wired to pin 5 of it's respective esp8266 (goes HIGH on rece
 If you are programming the bell leave `//#define ISBUTTON` commented out\
 If you are programming the button uncomment `#define ISBUTTON`
 
+It is recommended to use the Arduino IDE and do the following: 
+To install the ESP8266 board, (using Arduino 1.6.4+):
+  - Add the following 3rd party board manager under "File -> Preferences -> Additional Boards Manager URLs":
+       http://arduino.esp8266.com/stable/package_esp8266com_index.json
+  - Open the "Tools -> Board -> Board Manager" and click install for the ESP8266"
+  - Select your ESP8266 in "Tools -> Board"
+
 ## MQTT messages system responds to:
 
 `/fox/build/bell/ring         1`   ### ring bell\
